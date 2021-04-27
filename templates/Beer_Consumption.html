@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+        <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+		<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">		 -->
+		<!-- <meta charset="utf-8">   -->
+		<style>
+		* {
+		  box-sizing: border-box;
+		}
+
+		input[type=text], select, textarea {
+		  width: 100%;
+		  padding: 12px;
+		  border: 1px solid #ccc;
+		  border-radius: 4px;
+		  resize: vertical;
+		}
+
+		label {
+		  padding: 12px 12px 12px 0;
+		  display: inline-block;
+		}
+
+		input[type=submit] {
+		  background-color: #4CAF50;
+		  color: white;
+		  padding: 12px 20px;
+		  border: none;
+		  border-radius: 4px;
+		  cursor: pointer;
+		  float: right;
+		}
+
+		input[type=submit]:hover {
+		  background-color: #45a049;
+		}
+
+		.container {
+		  border-radius: 5px;
+		  background-color: #f2f2f2;
+		  padding: 20px;
+		}
+
+		.col-25 {
+		  float: left;
+		  width: 25%;
+		  margin-top: 6px;
+		}
+
+		.col-75 {
+		  float: left;
+		  width: 75%;
+		  margin-top: 6px;
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+		  content: "";
+		  display: table;
+		  clear: both;
+		}
+
+		/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+		@media screen and (max-width: 600px) {
+		  .col-25, .col-75, input[type=submit] {
+			width: 100%;
+			margin-top: 0;
+		  }
+		}
+		
+		.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+}
+		</style>
+	</head>
+	<body>
+		
+		<div class="container">
+			<h2>Beer Component Consumtion Prediction for O2 and CO2</h2>
+		  <form>
+			<div class="row">
+			  <!-- <div class="col-25">
+				<label for="fname">Date</label>
+			  </div> -->
+			  <!-- <div class="col-75">
+				<input type="date" id="datepicker" name="datepicker" placeholder="Select Date">
+			  </div> -->
+			</div>
+			<div class="row">
+			  <div class="col-25">
+				<label for="volumn_hlt">Volumn HLT</label>
+			  </div>
+			  <div class="col-75">
+				<input type="text" id="volumn_hlt" name="volumn_hlt" placeholder="Volumn HLT">
+			  </div>
+			</div>
+			<div class="row">
+			  <div class="col-25">
+				<label for="country">Brand Name</label>
+			  </div>
+			  <div class="col-75">
+				<select id="brand" name="brand">
+				  <option selected value="">Select Brand</option>
+				  <option value="Carlsberg">Carlsberg</option>
+				  <option value="1664">1664</option>
+				  <option value="Tuborg">Tuborg</option>
+				  <option value="Brooklyn">Brooklyn</option>
+				  <option value="Kongens">Kongens</option>
+				  <option value="Kronenbourg">Kronenbourg</option>
+				  <option value="Wiibroe">Wiibroe</option>
+				  <option value="Jacobsen">Jacobsen</option>				  
+				</select>
+			  </div>
+			</div>
+			<div class="row" style="margin:20px;" >
+			  <input type="button" style="float:right;" class="button" value="Submit" onclick="getPrdiction()">
+			</div>
+		  </form>
+		  
+		  <div class="row">
+			  <div class="col-25">
+				<label for="prediction">Prediction Result</label>
+			  </div>
+			  <div class="col-75">
+				<textarea id="prediction" name="prediction" placeholder="Prediction result.." style="height:200px"></textarea>
+			  </div>
+			</div>
+			
+		</div>
+		<script>			
+			function getPrdiction(){
+				// alert("Form submitted");
+				var data = {
+					// selectedDate:$("#datepicker").val(),
+					volumnHLT:$("#volumn_hlt").val(),
+					brand_name:$("#brand option:selected").val()
+				}
+				console.log(data);
+				var url="";
+				$.ajax({
+					type: 'POST',
+					url:'/',
+					data:JSON.stringify({data: data}),
+					dataType:"json",
+					contentType: 'application/json; charset=utf-8',
+					success:function(result){
+						$("#prediction").val(result.data),
+						console.log(result);
+					},
+					error:function(error){
+						console.log(error);
+					}
+				})
+			}
+		</script>
+	</body>
+	
+</html>
