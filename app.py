@@ -24,7 +24,7 @@ def image_match():
         # selected_date = datetime.strptime(resp.get('selectedDate'), '%Y-%m-%d').date()
         # selected_date = selected_date.toordinal()
         selected_brand = classes.get(resp.get('brand_name'))
-        loaded_model = pickle.load(open('O2_CO2_Beer_data.pkl', 'rb'))
+        loaded_model = pickle.load(open('O2_Heat_Beer_data.pkl', 'rb'))
         data = np.append(selected_brand, [resp.get('volumnHLT')])
         # pred = np.array([[0., 0., 1., 0., 0., 0., 0., 0.,737073, 506.088]])
         pred = np.array([data])
