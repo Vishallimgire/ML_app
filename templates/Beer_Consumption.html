@@ -87,7 +87,7 @@
 	<body>
 		
 		<div class="container">
-			<h2>Beer Component Consumtion Prediction for O2 and Heat</h2>
+			<h2>Beer Component Consumtion Prediction</h2>
 		  <form>
 			<div class="row">
 			  <!-- <div class="col-25">
@@ -107,11 +107,11 @@
 			</div>
 			<div class="row">
 			  <div class="col-25">
-				<label for="country">Brand Name</label>
+				<label for="country">Brand Type</label>
 			  </div>
 			  <div class="col-75">
 				<select id="brand" name="brand">
-				  <option selected value="">Select Brand</option>
+				  <!-- <option selected value="">Select Brand</option>
 				  <option value="Carlsberg">Carlsberg</option>
 				  <option value="1664">1664</option>
 				  <option value="Tuborg">Tuborg</option>
@@ -119,10 +119,39 @@
 				  <option value="Kongens">Kongens</option>
 				  <option value="Kronenbourg">Kronenbourg</option>
 				  <option value="Wiibroe">Wiibroe</option>
-				  <option value="Jacobsen">Jacobsen</option>				  
+				  <option value="Jacobsen">Jacobsen</option>				   -->
+				  <option selected value="">Select Brand Type</option>
+				  <option value="Læsk">Læsk</option>
+				  <option value="Cider">Cider</option>
+				  <option value="Øl">Øl</option>
+
 				</select>
 			  </div>
 			</div>
+			<div class="row">
+				<div class="col-25">
+				  <label for="country">Energy Art</label>
+				</div>
+				<div class="col-75">
+				  <select id="energy" name="energy">
+					<!-- <option selected value="">Select Brand</option>
+					<option value="Carlsberg">Carlsberg</option>
+					<option value="1664">1664</option>
+					<option value="Tuborg">Tuborg</option>
+					<option value="Brooklyn">Brooklyn</option>
+					<option value="Kongens">Kongens</option>
+					<option value="Kronenbourg">Kronenbourg</option>
+					<option value="Wiibroe">Wiibroe</option>
+					<option value="Jacobsen">Jacobsen</option>				   -->
+					<option selected value="">Select Energy Art</option>
+					<option value="CO2">CO2</option>
+					<option value="Electricity">Electricity</option>
+					<option value="Water">Water</option>
+					<option value="Heat">Heat</option>
+  
+				  </select>
+				</div>
+			  </div>
 			<div class="row" style="margin:20px;" >
 			  <input type="button" style="float:right;" class="button" value="Submit" onclick="getPrdiction()">
 			</div>
@@ -144,7 +173,8 @@
 				var data = {
 					// selectedDate:$("#datepicker").val(),
 					volumnHLT:$("#volumn_hlt").val(),
-					brand_name:$("#brand option:selected").val()
+					brand_type:$("#brand option:selected").val(),
+					energy_type:$("#energy option:selected").val()
 				}
 				console.log(data);
 				var url="";
