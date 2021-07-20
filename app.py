@@ -44,20 +44,25 @@ def format_coefs(coefs):
 
 
 app.layout = html.Div([
-    html.P("Select Model:"),
+    # html.P("Select Model:"),
     dcc.Dropdown(
         id='model-name',
-        options=[{'label': x, 'value': x} 
-                 for x in models],
+        # options=[{'label': x, 'value': x} 
+        #          for x in models],
         value='Regression',
-        clearable=False
+        clearable=False,
+        disabled=True,
+        style={'display':'None'}
+    
     ),
     dcc.Graph(id="graph"),
 ])
 
+# 
 @app.callback(
     dash.dependencies.Output("graph", "figure"), 
-    [dash.dependencies.Input('model-name', "value")])
+    [dash.dependencies.Input('model-name', "value")]
+    )
 def train_and_display(name):
     dataset = pd.read_csv('combine_data.csv')
     dataset = dataset[['TotalVolumeHLT', 'EnergyUsedAdjusted']]
@@ -131,4 +136,4 @@ def image_match():
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
