@@ -165,6 +165,10 @@
 				<textarea id="prediction" name="prediction" placeholder="Prediction result.." style="height:200px"></textarea>
 			  </div>
 			</div>
+
+			<div>
+				<iframe src="http://127.0.0.1:8050/" width=600 height=600></iframe>
+			</div>
 			
 		</div>
 		<script>			
@@ -180,7 +184,7 @@
 				var url="";
 				$.ajax({
 					type: 'POST',
-					url:'/',
+					url:'/home',
 					data:JSON.stringify({data: data}),
 					dataType:"json",
 					contentType: 'application/json; charset=utf-8',

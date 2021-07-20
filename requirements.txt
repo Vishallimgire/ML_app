@@ -1,3 +1,7 @@
 Flask==1.1.2
 numpy==1.16.6
 scikit-learn==0.24.1
+dash==1.21.0
+plotly==5.1.0
+
+
