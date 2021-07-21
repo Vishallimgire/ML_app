@@ -136,4 +136,5 @@ def image_match():
 
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', port=5000, debug=False)
+    # app.run_server(host='0.0.0.0', port=5000, debug=False)
+    server.run(host='0.0.0.0', debug=False)
